@@ -1,32 +1,37 @@
 package main.java.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity(name = "Livre")
 @Table(name="Livre")
 
 public class Livre implements Serializable {
     @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column (name = "auteur")
     private String auteur;
     @Column (name = "titre")
     private String titre;
 
+    @Id
+    @GeneratedValue
+    @Column(name = "id_liv")
+    public int getId() {
+        return id;
+    }
+
     public Livre() {
     }
 
     // Getters & setters
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
+//    public int getId() {
+//        return id;
+//    }
+    public void setId(int id) {
         this.id = id;
     }
 
